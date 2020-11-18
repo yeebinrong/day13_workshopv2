@@ -1,0 +1,37 @@
+<mat-card>
+    <div class="row">
+        <div class="col">
+            <h1>
+                Add your task to do!
+            </h1>
+        </div>
+    </div>
+</mat-card>
+<mat-card class="mt-3">
+    <form #form="ngForm" [formGroup]="todoForm" (ngSubmit)="processForm(form)" class="ml-3 mr-3">
+        <div class="row">
+            <mat-form-field class="mw-100 w-100">
+                <input type="text" formControlName="description" matInput placeholder="Task to do.">
+                <div *ngIf="todoForm.get('description').hasError('required')"></div>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-radio-group formControlName="priority">           
+                <p>Priority</p> 
+                <mat-radio-button value="Low">Low</mat-radio-button>
+                <mat-radio-button value="Medium" class="ml-3">Medium</mat-radio-button>
+                <mat-radio-button value="High" class="ml-3">High</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <input matInput [min]="minDate" [matDatepicker]="datepicker" formControlName="date" placeholder="Due date.">
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <button type="submit" color="primary" mat-raised-button [disabled]="todoForm.invalid">Add</button>
+        </div>
+    </form>
+</mat-card>

@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col">
+        <mat-card>
+            <h1>To do list.</h1>
+        </mat-card>
+    </div>
+</div>
+<mat-card *ngFor="let item of list" class="mt-3">
+ <div class="row">
+        <div class="col-8">
+            <mat-card-title-group>
+                <mat-card-title>{{item.description}}</mat-card-title>
+                <mat-card-subtitle>Priority is {{item.priority}}</mat-card-subtitle>
+            </mat-card-title-group>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <mat-card-content>Due by {{item.date._d.toLocaleDateString()}}</mat-card-content>
+            </div>
+        </div>
+    </div>
+</mat-card>
+
+<mat-card class="mt-3">
+    <div class="row">
+        <div class="col-8">
+            <mat-card-title-group>
+                <mat-card-title>test</mat-card-title>
+                <mat-card-subtitle>Priority is</mat-card-subtitle>
+            </mat-card-title-group>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <mat-card-content>Due by</mat-card-content>
+            </div>
+            <div class="row">
+                <button color="accent" mat-mini-fab class="mr-3"><mat-icon>check</mat-icon></button>
+                <button color="primary" mat-mini-fab class="mr-3"><mat-icon>create</mat-icon></button>
+                <button color="warn" mat-mini-fab><mat-icon>delete</mat-icon></button>
+            </div>
+        </div>
+    </div>
+</mat-card>
+
+<mat-expansion-panel *ngFor="let item of list" hideToggle class="mt-3 p-3">
+    <mat-expansion-panel-header>
+        <mat-panel-title class="mt-3 mb-3">{{item.description}}</mat-panel-title>
+        <mat-panel-description class="mt-3 mb-3">Priority is {{item.priority}}</mat-panel-description>
+        <mat-panel-description class="mt-3 mb-3">Due by {{item.date._d.toLocaleDateString()}}</mat-panel-description>
+        <button class="mt-3 mb-3 mr-3" color="accent" mat-mini-fab><mat-icon>check</mat-icon></button>
+        <button class="mt-3 mb-3" color="primary" mat-mini-fab><mat-icon>create</mat-icon></button>
+    </mat-expansion-panel-header>
+    <div class="col m-0">
+        <div class="row">
+            <mat-form-field class="mw-100 w-100">
+                <mat-label>Task to do.</mat-label>
+            <input matInput value="{{item.description}}" placeholder="Task to do.">
+        </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-radio-group>           
+                <p>Priority</p> 
+                <mat-radio-button value="Low">Low</mat-radio-button>
+                <mat-radio-button value="Medium" class="ml-3">Medium</mat-radio-button>
+                <mat-radio-button value="High" class="ml-3">High</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="row">
+            <mat-form-field >
+                <input matInput [min]="minDate" [matDatepicker]="datepicker" placeholder="Due date." value={{item.date._d.toLocaleDateString()}}>
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-action-row>
+        <button color="primary" mat-mini-fab><mat-icon>save</mat-icon></button>
+        <button class="ml-3" color="warn" mat-mini-fab><mat-icon>delete</mat-icon></button>
+    </mat-action-row>
+</mat-expansion-panel>
+   

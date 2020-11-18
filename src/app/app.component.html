@@ -1,0 +1,19 @@
+<div class="container mw-100">
+  <div class="row">
+    <div class="col-12">
+      <mat-card class="text-center">
+        <h1>Task List Generator</h1>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-1"></div>
+    <div class="col-3">
+      <app-todo (addNewTask)="addtodo($event)"></app-todo>
+    </div>
+    <div class="col-7">
+      <app-tasks [list]="list"></app-tasks>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
