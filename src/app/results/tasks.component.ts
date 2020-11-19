@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewChecked, AfterViewInit } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -11,10 +11,23 @@ export class TasksComponent implements OnInit {
   completedList = [];
   minDate : Date;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() { 
+  }
+  
+  ngOnInit() {
     this.minDate = new Date();
+  }
+  
+  ngAfterViewInit() {
+    console.info("data retrieved not yet working");
+    // this.list = JSON.parse(localStorage.getItem('list'));
+    // this.completedList = JSON.parse(localStorage.getItem('completedList'));
+  }
+
+  ngAfterViewChecked() {
+    console.info("data stored");
+    localStorage.setItem('list', JSON.stringify(this.list));
+    localStorage.setItem('completedList', JSON.stringify(this.completedList));
   }
 
   alertDelete(i) {
@@ -29,6 +42,8 @@ export class TasksComponent implements OnInit {
 
   markCompleted(i) {
     const copied = Object.assign({}, this.list[i]);
+    copied.date = moment(new Date())
+    console.log(copied.date);
     this.completedList.push(copied);
     this.list.splice(i, 1);
   }

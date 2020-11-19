@@ -18,13 +18,13 @@
         <div class="row mt-3">
             <mat-radio-group formControlName="priority">           
                 <p>Priority</p> 
-                <mat-radio-button value="Low">Low</mat-radio-button>
-                <mat-radio-button value="Medium" class="ml-3">Medium</mat-radio-button>
-                <mat-radio-button value="High" class="ml-3">High</mat-radio-button>
+                <mat-radio-button value="Low" class="mr-3">Low</mat-radio-button>
+                <mat-radio-button value="Medium" class="mr-3">Medium</mat-radio-button>
+                <mat-radio-button value="High">High</mat-radio-button>
             </mat-radio-group>
         </div>
         <div class="row">
-            <mat-form-field>
+            <mat-form-field class="mw-100 w-100">
                 <input matInput [min]="minDate" [matDatepicker]="datepicker" formControlName="date" placeholder="Due date.">
                 <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
                 <mat-datepicker #datepicker></mat-datepicker>

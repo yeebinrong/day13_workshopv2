@@ -21,11 +21,11 @@
                 <div class="row">
                     <mat-card class ="mt-3 p-3 mw-100 w-100">
                         <div class="col-8 mr-0 float-left">
-                            <mat-card-title class="text-wrap">{{item.description}}</mat-card-title>
+                            <mat-card-title>{{item.description}}</mat-card-title>
                             <mat-card-subtitle>Priority is {{item.priority}}</mat-card-subtitle>
                         </div>
                         <div class="col-3 mr-0 float-right">
-                            <mad-card-subtitle class="align-self-center justify-content-center">Due by {{item.date._d.toLocaleDateString()}}</mad-card-subtitle>
+                            <mad-card-subtitle class="align-self-center justify-content-center">Due by {{item.date._d.toDateString()}}</mad-card-subtitle>
                         </div>
                     </mat-card>
                 </div>
@@ -102,7 +102,7 @@
                             <mat-card-subtitle>Priority is {{item.priority}}</mat-card-subtitle>
                         </div>
                         <div class="col-3 mr-0 float-right">
-                            <mad-card-subtitle class="align-self-center justify-content-center">Due by {{item.date._d.toLocaleDateString()}}</mad-card-subtitle>
+                            <mad-card-subtitle class="align-self-center justify-content-center">Completed at {{item.date._d.toDateString()}}</mad-card-subtitle>
                         </div>
                     </mat-card>
                 </div>
