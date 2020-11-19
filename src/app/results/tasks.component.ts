@@ -8,6 +8,7 @@ import * as moment from 'moment';
 })
 export class TasksComponent implements OnInit {
   @Input() list;
+  completedList = [];
   minDate : Date;
 
   constructor() { }
@@ -17,15 +18,23 @@ export class TasksComponent implements OnInit {
   }
 
   alertDelete(i) {
-    console.log("deleting");
     if(confirm("Are you sure to delete?")) {
-      console.log(i);
       this.list.splice(i, 1);
     }
   }
 
-  markCompleted(i) {
+  removeCompleted(i) {
+      this.completedList.splice(i, 1);
+  }
 
+  markCompleted(i) {
+    const copied = Object.assign({}, this.list[i]);
+    this.completedList.push(copied);
+    this.list.splice(i, 1);
+  }
+
+  togglePanel(i) {
+    this.list[i].isOpen = !this.list[i].isOpen;
   }
 
   updateText(event, i) {

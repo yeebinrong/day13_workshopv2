@@ -17,7 +17,8 @@ export class TodoComponent implements OnInit {
     this.todoForm = this.fb.group({
       description: this.fb.control('', [Validators.required]),
       priority: this.fb.control(null, [Validators.required]),
-      date: this.fb.control(null, [Validators.required])
+      date: this.fb.control(null, [Validators.required]),
+      isOpen: this.fb.control(false)
     })
     this.minDate = new Date();
   }
