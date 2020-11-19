@@ -12,10 +12,10 @@
         <div class="row">
             <mat-form-field class="mw-100 w-100">
                 <input type="text" formControlName="description" matInput placeholder="Task to do.">
-                <div *ngIf="todoForm.get('description').hasError('required')"></div>
+                <mat-error *ngIf="todoForm.get('description').hasError('required')">Please enter a task.</mat-error>
             </mat-form-field>
         </div>
-        <div class="row">
+        <div class="row mt-3">
             <mat-radio-group formControlName="priority">           
                 <p>Priority</p> 
                 <mat-radio-button value="Low">Low</mat-radio-button>
@@ -28,9 +28,10 @@
                 <input matInput [min]="minDate" [matDatepicker]="datepicker" formControlName="date" placeholder="Due date.">
                 <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
                 <mat-datepicker #datepicker></mat-datepicker>
+                <mat-error *ngIf="todoForm.get('date').hasError('required')">Please enter a valid date.</mat-error>
             </mat-form-field>
         </div>
-        <div class="row">
+        <div class="row mt-3">
             <button type="submit" color="primary" mat-raised-button [disabled]="todoForm.invalid">Add</button>
         </div>
     </form>

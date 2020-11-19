@@ -24,6 +24,6 @@ export class TodoComponent implements OnInit {
 
   processForm(form) {
     this.addNewTask.next(this.todoForm.value);
-    form.reset();
+    form.resetForm();
   }
 }

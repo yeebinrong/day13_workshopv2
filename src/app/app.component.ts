@@ -10,7 +10,8 @@ export class AppComponent {
   list = [];
 
   addtodo (value) {
-    this.list.push(value);
+    const copied = Object.assign({}, value);
+    this.list.push(copied);
     console.log(this.list);
   }
 }

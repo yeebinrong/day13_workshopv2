@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,10 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     BrowserAnimationsModule,
     MatMomentDateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
