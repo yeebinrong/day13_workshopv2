@@ -8,7 +8,7 @@ import * as moment from 'moment';
 })
 export class TasksComponent implements OnInit {
   @Input() list;
-  completedList = [];
+  @Input() completedList;
   minDate : Date;
 
   constructor() { 
@@ -17,15 +17,8 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
     this.minDate = new Date();
   }
-  
-  ngAfterViewInit() {
-    console.info("data retrieved not yet working");
-    // this.list = JSON.parse(localStorage.getItem('list'));
-    // this.completedList = JSON.parse(localStorage.getItem('completedList'));
-  }
 
   ngAfterViewChecked() {
-    console.info("data stored");
     localStorage.setItem('list', JSON.stringify(this.list));
     localStorage.setItem('completedList', JSON.stringify(this.completedList));
   }
